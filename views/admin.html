@@ -1,0 +1,18 @@
+{{template "adminheader.html" .}}
+	<div style="padding: 10px">
+		<div style="float: right;">
+			<div class="btn-group" role="group" aria-label="...">
+			  <a type="button" class="btn btn-default" href="/admin/add">添加</a>
+			</div>
+		</div>
+		<div style="clear:both;"></div>
+	</div>
+	<div>
+	</div>
+   <script>
+    function onLogin(){
+    	window.location.href="/admin/logout"
+    }
+
+    </script>
+ {{template "adminfooter.html" .}}

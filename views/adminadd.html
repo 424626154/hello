@@ -1,0 +1,19 @@
+{{template "adminheader.html" .}}
+<form id="add" name="add" class="" method="post" action="/admin/addcommodity" enctype="multipart/form-data">
+    <div class="">
+        <label for="">名称</label>
+        <input type="text" class="form-control" id="title" name="title" placeholder="输入标题">
+    </div>
+    <div class="">
+        <label for="">网站</label>
+        <input type="text" class="form-control" id="weburl" name="weburl" placeholder="输入标题">
+    </div>
+    <div class="my_select_img">
+        <div>
+            <h5>Icon</h5>
+            <input type="file" class="form-control my_file" name="image" id="image" accept="image/jpeg,image/jpg,image/png">
+        </div>
+    </div>
+    <button type="button" class="my_button my_gray" onclick="addCommodity();">发布</button>
+</form>
+{{template "adminfooter.html" .}}
