@@ -30,67 +30,11 @@
 	<div>
 		<div class="container">
 			<div class="row">
-				<div class="col-xs-6 col-md-3 item_div">
-					<a id="stackoverflow" class="btn btn-default item" href="https://stackoverflow.com/" target="_Blank" role="button"><span><img class="itemi" src="../static/img/stackoverflow.png"></span>Stack Overflow</a>
-				</div>
-				<div class="col-xs-6 col-md-3 item_div">
-					<a id="stackoverflow" class="btn btn-default item" href="https://github.com/" target="_Blank" role="button"><span><img class="itemi" src="../static/img/github.png"></span>Github</a>
-				</div>
-				<div class="col-xs-6 col-md-3 item_div">
-					<a id="stackoverflow" class="btn btn-default item" href="http://www.csdn.net/" target="_Blank" role="button"><span><img class="itemi" src="../static/img/csdn.ico"></span>CSDN</a>
-				</div>
-				<div class="col-xs-6 col-md-3 item_div">
-					<a id="stackoverflow" class="btn btn-default item" href="http://www.oschina.net/" target="_Blank" role="button"><span><img class="itemi" src="../static/img/oschina.png"></span>开源中国社区</a>
-				</div>
-				<div class="col-xs-6 col-md-3 item_div">
-					<a id="stackoverflow" class="btn btn-default item" href="http://www.w3school.com.cn/" target="_Blank" role="button"><span><img class="itemi" src="../static/img/w3school.jpg"></span>W3school</a>
-				</div>
-				<div class="col-xs-6 col-md-3 item_div">
-					<a id="stackoverflow" class="btn btn-default item" href="https://juejin.im/welcome" target="_Blank" role="button"><span><img class="itemi" src="../static/img/xitu.png"></span>掘金</a>
-				</div>
-				<div class="col-xs-6 col-md-3 item_div">
-					<a id="stackoverflow" class="btn btn-default item" href="http://www.bootcss.com/" target="_Blank" role="button"><span><img class="itemi" src="../static/img/bootcss.png"></span>Bootstrap中文网</a>
-				</div>
-				<div class="col-xs-6 col-md-3 item_div">
-					<a id="stackoverflow" class="btn btn-default item" href="https://beego.me/" target="_Blank" role="button"><span><img class="itemi" src="../static/img/beego.png"></span>Beego</a>
-				</div>
-				<div class="col-xs-6 col-md-3 item_div">
-					<a id="stackoverflow" class="btn btn-default item" href="http://www.cocos2d-x.org/" target="_Blank" role="button"><span><img class="itemi" src="../static/img/cocos2d-x.ico"></span>Coos2d-x</a>
-				</div>
-				<div class="col-xs-6 col-md-3 item_div">
-					<a id="stackoverflow" class="btn btn-default item" href="https://nodejs.org/en/" target="_Blank" role="button"><span><img class="itemi" src="../static/img/nodejs.png"></span>Node.js</a>
-				</div>
-				<div class="col-xs-6 col-md-3 item_div">
-					<a id="stackoverflow" class="btn btn-default item" href="http://nodejs.cn/" target="_Blank" role="button"><span><img class="itemi" src="../static/img/nodejs_cn.png"></span>Node.js 中文网</a>
-				</div>
-				<div class="col-xs-6 col-md-3 item_div">
-					<a id="stackoverflow" class="btn btn-default item" href="https://www.jikexueyuan.com/" target="_Blank" role="button"><span><img class="itemi" src="../static/img/jikexueyuan.jpeg"></span>极客学院</a>
-				</div>
-				<div class="col-xs-6 col-md-3 item_div">
-					<a id="stackoverflow" class="btn btn-default item" href="http://www.golaravel.com/" target="_Blank" role="button"><span><img class="itemi" src="../static/img/golaravel.ico"></span>Laravel中文网</a>
-				</div>
-				<div class="col-xs-6 col-md-3 item_div">
-					<a id="stackoverflow" class="btn btn-default item" href="http://www.expressjs.com.cn/" target="_Blank" role="button"><span><img class="itemi" src=""></span>Express</a>
-				</div>
-				<div class="col-xs-6 col-md-3 item_div">
-					<a id="stackoverflow" class="btn btn-default item" href="https://www.layabox.com/" target="_Blank" role="button"><span><img class="itemi" src="../static/img/layabox.ico"></span>Layabox</a>
-				</div>
-				<div class="col-xs-6 col-md-3 item_div">
-					<a id="stackoverflow" class="btn btn-default item" href="http://fir.im/" target="_Blank" role="button"><span><img class="itemi" src="../static/img/firim.png"></span>fir.im</a>
-				</div>
-				<div class="col-xs-6 col-md-3 item_div">
-					<a id="stackoverflow" class="btn btn-default item" href="http://reactnative.cn/" target="_Blank" role="button"><span><img class="itemi" src="../static/img/reactnative.png"></span>React Native 中文网</a>
-				</div>
-				<div class="col-xs-6 col-md-3 item_div">
-					<a id="stackoverflow" class="btn btn-default item" href="http://es6.ruanyifeng.com/" target="_Blank" role="button"><span><img class="itemi" src="../static/img/es.ico"></span>ECMAScript 6入门</a>
-				</div>
-				<div class="col-xs-6 col-md-3 item_div">
-					<a id="stackoverflow" class="btn btn-default item" href="http://www.zcool.com.cn" target="_Blank" role="button"><span><img class="itemi" src="../static/img/zcool.ico"></span>站酷 (ZCOOL)</a>
-				</div>
-				<div class="col-xs-6 col-md-3 item_div">
-					<a id="stackoverflow" class="btn btn-default item" href="https://www.tslang.cn" target="_Blank" role="button"><span><img class="itemi" src="../static/img/tslang.png"></span>TypeScript中文网</a>
-				</div>
-				
+				 {{range .Webs}}
+				 	<div class="col-xs-6 col-md-3 item_div">
+						<a id="web_{{.Id}}" class="btn btn-default item" href="{{.Url}}" target="_Blank" role="button"><span>{{if ne .Icon ""}}<img class="itemi" src="{{isimgpath .Icon}}">{{end}}</span>{{.Title}}</a>
+					</div>
+				 {{end}}
 			</div>
 		</div>
 	</div>
@@ -98,7 +42,7 @@
 	<footer>
 		<div class="jumbotron">
 	        <div class="container">
-	            <h4>version:1.0.0</h4>
+	            <h4>version:{{isversion }}</h4>
 	        </div>
 	    </div>
 	</footer>
@@ -107,6 +51,17 @@
     <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="../static/js/bootstrap.min.js"></script>
-
+    <script type="text/javascript">
+    	var objs = {{.Webs}}
+    	for (var i = 0; i < objs.length; i++) {
+    		var obj = objs[i];
+    		$("#web_"+obj.Id).
+            tooltip({
+            trigger:'hover',
+            html:true,
+            title:obj.Desc});
+    	}
+ 
+    </script>
   </body>
 </html>

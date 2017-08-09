@@ -1,7 +1,9 @@
 package hutil
 
 import (
+	"fmt"
 	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/config"
 	"github.com/astaxie/beego/context"
 )
 
@@ -17,4 +19,21 @@ func GetAdminAccount(ctx *context.Context) string {
 		return ""
 	}
 	return ck.Value
+}
+
+//图床服务器路径
+func IsImgPath(imgid string) (imgpath string) {
+	url := "/imagehosting/"
+	return fmt.Sprintf("%s%s", url, imgid)
+}
+
+func IsVersion() (version string) {
+	cversion := "1.0.0Bate"
+	cnf, err := config.NewConfig("ini", "conf/hello.conf")
+	if err != nil {
+		beego.Error(err)
+	}
+	beego.Debug("-------------cnf:", cnf)
+	cversion = cnf.String("hello::version")
+	return cversion
 }

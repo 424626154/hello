@@ -1,0 +1,38 @@
+{{template "adminheader.html" .}}
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function() {
+        $("#title").val({{.Web.Title}})
+        $("#weburl").val({{.Web.Url}})
+        $("#desc").val({{.Web.Desc}})
+    })
+
+</script>
+<div class="container">
+<form id="up" name="up" class="" method="post" action="/admin/up" enctype="multipart/form-data">
+    <input type="hidden" class="form-control" id="id" name="id" value="{{.Web.Id}}">
+    <div class="">
+        <label for="">名称</label>
+        <input type="text" class="form-control" id="title" name="title" placeholder="">
+    </div>
+    <div class="">
+        <label for="">网站</label>
+        <input type="text" class="form-control" id="weburl" name="weburl" placeholder="">
+    </div>
+    <div class="">
+        <label for="">描述</label>
+        <input type="text" class="form-control" id="desc" name="desc" placeholder="">
+    </div>
+    <div class="my_select_img">
+        <div>
+            <h5>Icon</h5>
+            {{if ne .Web.Icon ""}}
+                <img style="width: 100px;height: auto;" src="{{isimgpath .Web.Icon}}">
+            {{end}}
+            <input type="file" class="form-control my_file" name="image" id="image" accept="image/*">
+        </div>
+    </div>
+    <button type="submit" class="my_button my_gray">修改</button>
+</form>
+</div>
+{{template "adminfooter.html" .}}

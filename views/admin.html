@@ -8,6 +8,31 @@
 		<div style="clear:both;"></div>
 	</div>
 	<div>
+		<div class="container">
+			<table class="table">
+			    <tr>
+					<th>名称</th>
+					<th>icon</th>
+					<th>地址</th>
+					<th>简介</th>
+					<th>操作</th>
+				</tr>
+				{{range .Webs}}
+					 <tr>
+						<td>{{.Title}}</td>
+						<td><img style="width: 100px;height: auto;" src="{{isimgpath .Icon}}">
+						<td>{{.Url}}</td>
+						<td>{{.Desc}}</td>
+						<td>
+						   <div class="btn-group" role="group" aria-label="...">
+							  <a type="button" class="btn btn-primary" href="/admin/up?id={{.Id}}">修改</a>
+							  <a type="button" class="btn btn-danger" href="/admin?op=del&id={{.Id}}">删除</a>
+						  </div>
+						</td>
+					</tr>
+				 {{end}}
+			  </table>
+		</div>
 	</div>
    <script>
     function onLogin(){
