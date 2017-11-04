@@ -95,6 +95,13 @@ func (c *AdminController) Add() {
 		title := c.Input().Get("title")
 		weburl := c.Input().Get("weburl")
 		desc := c.Input().Get("desc")
+		ftype := c.Input().Get("type")
+		atype := 0
+		if ftype == "type1" {
+			atype = 0
+		} else if ftype == "type2" {
+			atype = 1
+		}
 		if len(title) > 0 && len(weburl) > 0 {
 			_, fh, err := c.GetFile("image")
 			if err != nil {
@@ -116,7 +123,7 @@ func (c *AdminController) Add() {
 					beego.Error(err)
 				}
 			}
-			_, err = models.AddWeb(title, weburl, desc, showimg)
+			_, err = models.AddWeb(title, weburl, desc, showimg, int8(atype))
 			if err != nil {
 				beego.Error(err)
 				c.Redirect("/admin/add", 302)
@@ -147,8 +154,15 @@ func (c *AdminController) Up() {
 		title := c.Input().Get("title")
 		weburl := c.Input().Get("weburl")
 		desc := c.Input().Get("desc")
+		ftype := c.Input().Get("type")
+		atype := 0
+		if ftype == "type1" {
+			atype = 0
+		} else if ftype == "type2" {
+			atype = 1
+		}
 		if len(title) > 0 && len(weburl) > 0 {
-			err := models.UpWebInfo(id, title, weburl, desc)
+			err := models.UpWebInfo(id, title, weburl, desc, int8(atype))
 			if err != nil {
 				beego.Error(err)
 				c.Redirect("/admin/up?id="+id, 302)

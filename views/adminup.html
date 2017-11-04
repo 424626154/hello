@@ -5,6 +5,11 @@
         $("#title").val({{.Web.Title}})
         $("#weburl").val({{.Web.Url}})
         $("#desc").val({{.Web.Desc}})
+        if ({{.Web.Type}} == 0){
+            $('#type1').click()
+        }else if({{.Web.Type}} == 1){
+            $('#type2').click()
+        }
     })
 
 </script>
@@ -32,7 +37,18 @@
             <input type="file" class="form-control my_file" name="image" id="image" accept="image/*">
         </div>
     </div>
-    <button type="submit" class="my_button my_gray">修改</button>
+    <div class="">
+        <br/>
+        <label for="">选择分类</label>
+        <label class="radio-inline">
+          <input type="radio" name="type" id="type1" value="type1" checked> home
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="type" id="type2" value="type2"> blog
+        </label>
+    </div>  
+    <button type="submit" class="btn btn-default pull-right">修改</button>
+    <br/><br/>
 </form>
 </div>
 {{template "adminfooter.html" .}}

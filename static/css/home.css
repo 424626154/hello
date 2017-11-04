@@ -2,11 +2,18 @@
 	font-weight: bold;
 	font-size: 20px;
 }
-
+.small_item {
+	font-weight: bold;
+	font-size: 10px;
+}
 .itemi {
 	height: 30px;
 }
 .item_div{
 	padding: 10px 10px 10px 10px;
 
+}
+
+#hellobg {
+    /*background-image: url(./static/img/hello.gif);*/
 }

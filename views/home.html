@@ -22,17 +22,25 @@
 	<header>
 	    <div class="jumbotron">
 	        <div class="container">
+                <div class="btn-group" role="group" aria-label="...">
+                      <a type="button" class="btn btn-default active" href="/">Home</a>
+                      <a type="button" class="btn btn-default" href="/blogs">Blog</a>
+                </div>
 	            <h1>Hello, world!</h1>
 	            <p>程序员开发常用网站汇总</p>
 	        </div>
 	    </div>
 	</header>
-	<div>
+	<div class="hellobg" style="background-image :url(./static/img/hello.png); background-repeat : no-repeat; background-color:rgba(0,0,0,0.9)" >
 		<div class="container">
 			<div class="row">
 				 {{range .Webs}}
 				 	<div class="col-xs-6 col-md-3 item_div">
-						<a id="web_{{.Id}}" class="btn btn-default item" href="{{.Url}}" target="_Blank" role="button"><span>{{if ne .Icon ""}}<img class="itemi" src="{{isimgpath .Icon}}">{{end}}</span>{{.Title}}</a>
+                        {{if ge (.Title|len) 30}}
+						<a id="web_{{.Id}}" class="btn btn-default small_item" href="{{.Url}}" target="_blank" role="button"><span>{{if ne .Icon ""}}<img class="itemi" src="{{isimgpath .Icon}}">{{end}}</span>{{.Title}}</a>
+                        {{else}}
+                        <a id="web_{{.Id}}" class="btn btn-default item" href="{{.Url}}" target="_blank" role="button"><span>{{if ne .Icon ""}}<img class="itemi" src="{{isimgpath .Icon}}">{{end}}</span>{{.Title}}</a>
+                        {{end}}
 					</div>
 				 {{end}}
 			</div>
