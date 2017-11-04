@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>Hello Word</title>
+    <link rel="shortcut icon" href="../static/img/favicon.ico" />
+    <!-- Bootstrap -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link href="../static/css/home.css" rel="stylesheet">
+  </head>
+  <body>
+	<header>
+	    <div class="jumbotron">
+	        <div class="container">
+                <div class="btn-group" role="group" aria-label="...">
+                      <a type="button" class="btn btn-default " href="/">Home</a>
+                      <a type="button" class="btn btn-default active" href="/blogs">Blog</a>
+                </div>
+	            <h1>Hello, world!</h1>
+	            <p>程序员开发常用网站汇总</p>
+	        </div>
+	    </div>
+	</header>
+	<div class="hellobg" style="background-image :url(./static/img/hello.png); background-repeat : no-repeat; background-color:rgba(0,0,0,0.9)" >
+		<div class="container">
+			<div class="row">
+				 {{range .Webs}}
+				 	<div class="col-xs-6 col-md-3 item_div">
+                        {{if ge (.Title|len) 30}}
+						<a id="web_{{.Id}}" class="btn btn-default small_item" href="{{.Url}}" target="_blank" role="button"><span>{{if ne .Icon ""}}<img class="itemi" src="{{isimgpath .Icon}}">{{end}}</span>{{.Title}}</a>
+                        {{else}}
+                        <a id="web_{{.Id}}" class="btn btn-default item" href="{{.Url}}" target="_blank" role="button"><span>{{if ne .Icon ""}}<img class="itemi" src="{{isimgpath .Icon}}">{{end}}</span>{{.Title}}</a>
+                        {{end}}
+					</div>
+				 {{end}}
+			</div>
+		</div>
+	</div>
+
+	<footer>
+		<div class="jumbotron">
+	        <div class="container">
+	            <h4>version:{{isversion }}</h4>
+	        </div>
+	    </div>
+	</footer>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    	var objs = {{.Webs}}
+    	for (var i = 0; i < objs.length; i++) {
+    		var obj = objs[i];
+    		$("#web_"+obj.Id).
+            tooltip({
+            trigger:'hover',
+            html:true,
+            title:obj.Desc});
+    	}
+ 
+    </script>
+  </body>
+</html>
